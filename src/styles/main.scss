@@ -67,11 +67,24 @@ body {
     }
   }
 }
+.todo-container {
+  padding: 20px;
+
+  li {
+    list-style: none;
+  }
+
+}
+
+.done {
+  text-decoration: line-through;
+}
 
 .view-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 footer {

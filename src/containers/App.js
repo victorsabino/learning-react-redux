@@ -13,7 +13,7 @@ import Footer from '../components/Footer';
 export class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { counter, actions, children} = this.props;
+    const { counter, foo, todo, actions, children} = this.props;
     return (
       <div className="main-app-container">
         <div className="main-app-nav">
@@ -29,7 +29,7 @@ export class App extends Component {
               and cloning the element, followed by passing props in. Notice that
               those props have been unpacked above! */}
             {React.Children.map(children, (child) => {
-              return React.cloneElement(child, { counter, actions });
+              return React.cloneElement(child, { counter, foo, todo, actions });
             })}
           </div>
           <Footer />
@@ -39,7 +39,9 @@ export class App extends Component {
 }
 
 App.propTypes = {
+  foo: PropTypes.number.isRequired,
   counter: PropTypes.number.isRequired,
+  todo: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   children: PropTypes.element.isRequired
 };
@@ -51,7 +53,9 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counter: state.counter,
+    foo: state.foo,
+    todo: state.todo
   };
 }
 
